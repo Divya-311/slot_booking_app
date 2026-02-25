@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slot Booking App</title>
+</head>
+<body>
+    <h2>Slot Booking</h2>
+
+    <table border="1">
+        <tr>
+            <th>Slot Time</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for slot in slots %}
+        <tr>
+            <td>{{ slot[1] }}</td>
+            <td>
+                {% if slot[2] %}
+                    Booked
+                {% else %}
+                    Available
+                {% endif %}
+            </td>
+            <td>
+                {% if not slot[2] %}
+                    <a href="/book/{{ slot[0] }}">Book</a>
+                {% else %}
+                    <a href="/cancel/{{ slot[0] }}">Cancel</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
